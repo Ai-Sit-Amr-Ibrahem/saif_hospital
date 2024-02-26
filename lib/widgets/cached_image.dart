@@ -1,0 +1,28 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+
+import '../utils/resources/app_assets.dart';
+
+class CachedImageWidget extends StatelessWidget {
+  const CachedImageWidget({
+    Key? key,
+    required this.image,
+    this.height = 80,
+  }) : super(key: key);
+
+  final String image;
+  final double height;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return CachedNetworkImage(
+      fit: BoxFit.cover,
+      imageUrl: image,
+      height: height,
+      placeholder: (context, url) => Image.asset(AppAssets.mainLogo, height: height,),
+      errorWidget: (context, url, error) => Image.asset(AppAssets.mainLogo, height: height,),
+    );
+  }
+}

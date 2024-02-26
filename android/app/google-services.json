@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "527366159289",
+    "project_id": "saifhospital-4672d",
+    "storage_bucket": "saifhospital-4672d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527366159289:android:874ebfc457c5de66179468",
+        "android_client_info": {
+          "package_name": "com.his.saifHospital.saif_hospital"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmck7wKe6x1MSotvN-dVti6xst3aq77jU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
