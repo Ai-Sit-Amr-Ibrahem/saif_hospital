@@ -12,7 +12,7 @@ class EndPoints {
   static const String radio = 'radio';
   static const String lab = 'lab';
   static const String doctoravalible = 'doctoravalible';
-  static const String searchhome = 'searchhome';
+  static const String searchhome = 'search';
   static const String Billsmst = 'Billsmst';
   static const String updatenotification = 'updatenotification';
   static const String createappointment = 'createappointment';

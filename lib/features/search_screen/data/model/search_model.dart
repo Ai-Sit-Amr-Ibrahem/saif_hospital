@@ -33,15 +33,15 @@ class SearchData {
   SearchData({this.cLINIC, this.dOCTOR});
 
   SearchData.fromJson(Map<String, dynamic> json) {
-    if (json['CLINIC'] != null) {
+    if (json['clincs'] != null) {
       cLINIC = <ClinicData>[];
-      json['CLINIC'].forEach((v) {
+      json['clincs'].forEach((v) {
         cLINIC!.add(ClinicData.fromJson(v));
       });
     }
-    if (json['DOCTOR'] != null) {
+    if (json['doctors'] != null) {
       dOCTOR = <DoctorData>[];
-      json['DOCTOR'].forEach((v) {
+      json['doctors'].forEach((v) {
         dOCTOR!.add(DoctorData.fromJson(v));
       });
     }
@@ -50,10 +50,10 @@ class SearchData {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     if (cLINIC != null) {
-      data['CLINIC'] = cLINIC!.map((v) => v.toJson()).toList();
+      data['clincs'] = cLINIC!.map((v) => v.toJson()).toList();
     }
     if (dOCTOR != null) {
-      data['DOCTOR'] = dOCTOR!.map((v) => v.toJson()).toList();
+      data['doctors'] = dOCTOR!.map((v) => v.toJson()).toList();
     }
     return data;
   }

@@ -29,6 +29,8 @@ class DoctorModel {
 
 class DoctorData {
   String? dOCTORNAME;
+  String? dOCTOR;
+
   String? dOCTORID;
   String? dOCTORIMAGE;
   String? cLIINICID;
@@ -41,27 +43,32 @@ class DoctorData {
         this.dOCTORID,
         this.dOCTORIMAGE,
         this.cLIINICID,
+        this.dOCTOR,
         this.dOCTORDEGRE,
         this.price,
         this.resources});
 
   DoctorData.fromJson(Map<String, dynamic> json) {
+    dOCTOR = json['DOCTOR'];
+
     dOCTORNAME = json['DOCTOR_NAME'];
     dOCTORID = json['DOCTOR_ID'].toString();
     dOCTORIMAGE = json['DOCTOR_IMAGE'];
     cLIINICID = json['CLIINIC_ID'].toString();
-    dOCTORDEGRE = json['DOCTOR_DEGRE'];
+    dOCTORDEGRE = json['DOCTOR_DEGREE'];
     price = double.parse(json['price'].toString());
     resources = json['resources'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data['DOCTOR'] = dOCTOR;
+
     data['DOCTOR_NAME'] = dOCTORNAME;
     data['DOCTOR_ID'] = dOCTORID;
     data['DOCTOR_IMAGE'] = dOCTORIMAGE;
     data['CLIINIC_ID'] = cLIINICID;
-    data['DOCTOR_DEGRE'] = dOCTORDEGRE;
+    data['DOCTOR_DEGREE'] = dOCTORDEGRE;
     data['price'] = price;
     data['resources'] = resources;
     return data;

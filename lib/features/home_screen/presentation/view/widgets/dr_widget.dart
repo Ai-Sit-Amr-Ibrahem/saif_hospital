@@ -45,7 +45,7 @@ class DrWidget extends StatelessWidget {
                     shadowColor: AppColors.mainColor,
                     child: CachedImageWidget(
                       image: data.dOCTORIMAGE != 'NULL'
-                          ? data.dOCTORNAME!
+                          ? data.dOCTOR ?? data.dOCTORNAME!
                           : 'https://img.freepik.com/free-photo/medical-banner-with-doctor-wearing-goggles_23-2149611193.jpg?w=900&t=st=1680166194~exp=1680166794~hmac=fdc7357426a297dce81d20b4bf2e0a2a47ceaf4d70b3fd70ddabc5b7175fd779',
                     ),
                   ),
@@ -57,7 +57,7 @@ class DrWidget extends StatelessWidget {
                       children: [
                         ItemLine(
                           icon: Fontisto.stethoscope,
-                          text: data.dOCTORNAME ?? '',
+                          text: data.dOCTOR ?? '',
                           style: Theme.of(context)
                               .textTheme
                               .labelLarge!

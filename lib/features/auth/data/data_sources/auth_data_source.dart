@@ -37,11 +37,12 @@ class AuthDataSource {
       response = await instance<NetworkCall>().request(EndPoints.register,
           params: body,
           options: Options(method: Method.post.name, headers: headers));
+      print("eraada" + response.toString());
     } catch (error) {
       throw ServerException();
     }
+
     var res = jsonDecode(response.data);
-    print('res $res');
     if (res['status'] == 200) {
       return LoginModel.fromJson(res);
     } else {

@@ -38,7 +38,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
       "ACCOUNTNAME": userName,
       "PHONE": phoneNumber??'',
       "PASSWORD": password,
-      "DATE": birthdate,
+      "DATE": "21-06-1997",
       "GENDER": gender??'',
       "IDENTIFYNUM": id??'',
     };

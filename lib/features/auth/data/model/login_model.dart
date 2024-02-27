@@ -53,30 +53,28 @@ class Data {
 
 class Userdata {
   String? uSERNAME;
-  String? fILENUM;
+  int? fILENUM;
   String? tELEPHONE;
   int? aGE;
+  int? bALANCE;
 
-  Userdata({
-    this.uSERNAME,
-    this.fILENUM,
-    this.tELEPHONE,
-    this.aGE,
-  });
+  Userdata({this.uSERNAME, this.fILENUM, this.tELEPHONE, this.aGE, this.bALANCE});
 
   Userdata.fromJson(Map<String, dynamic> json) {
     uSERNAME = json['USERNAME'];
     fILENUM = json['FILENUM'];
     tELEPHONE = json['TELEPHONE'];
     aGE = json['AGE'];
+    bALANCE = json['BALANCE'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['USERNAME'] = uSERNAME;
-    data['FILENUM'] = fILENUM;
-    data['TELEPHONE'] = tELEPHONE;
-    data['AGE'] = aGE;
+    data['USERNAME'] = this.uSERNAME;
+    data['FILENUM'] = this.fILENUM;
+    data['TELEPHONE'] = this.tELEPHONE;
+    data['AGE'] = this.aGE;
+    data['BALANCE'] = this.bALANCE;
     return data;
   }
 }

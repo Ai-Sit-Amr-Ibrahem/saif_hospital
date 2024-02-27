@@ -24,7 +24,6 @@ import '../../../auth/presentation/features/login_screen/presentation/view/login
 import '../../../balance/presentation/view/balance_screen.dart';
 import '../../../home_layout/presentation/controller/home_layout_cubit.dart';
 import '../../../my_booking_screen/presentation/view/my_booking_screen.dart';
-import '../../../on_boarding_screen/presentation/view/on_boarding_screen.dart';
 import '../controller/theme_cubit/theme_cubit.dart';
 import '../controller/theme_cubit/theme_states.dart';
 import 'widgets/profile_actions_widget.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hisksa/features/search_screen/data/data_source/search_data_source.dart';
 import 'package:hisksa/features/search_screen/data/repo/search_repo.dart';
+import 'package:hisksa/utils/helper/hive_helper.dart';
 
 import '../../../../../../utils/di/injection.dart';
 import '../../../../../../utils/errors/failures.dart';
@@ -21,13 +22,15 @@ class SearchCubit extends Cubit<SearchStates> {
 
   SearchModel? searchModel;
 
-  void getSearch(context, String input) {
+  void getSearch(context, String searchWord) {
     print('here are dates');
     emit(GetSearchLoadingState());
     // showLoadingDialog(context, dismissible: false);
     _searchRepo.getSearch(
       body: {
-        'NAME_SEARCH': input,
+        'DOCTOR_NAME': searchWord,
+        'COST_CENTER_NAME': searchWord,
+
       },
     ).then((value) {
       // dismissLoadingDialog(context);

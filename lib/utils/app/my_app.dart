@@ -20,7 +20,6 @@ import '../../features/home_screen/presentation/controller/cubit/home_cubit.dart
 import '../../features/my_booking_screen/presentation/view/my_booking_details_screen.dart';
 import '../../features/my_booking_screen/presentation/view/my_booking_screen.dart';
 import '../../features/notifications_screen/presentation/view/notifications_screen.dart';
-import '../../features/on_boarding_screen/presentation/view/on_boarding_screen.dart';
 import '../../features/profile_screen/presentation/controller/theme_cubit/theme_cubit.dart';
 import '../../features/profile_screen/presentation/controller/theme_cubit/theme_states.dart';
 import '../../features/receipt_screen/presentation/view/receipt_screen.dart';
@@ -67,9 +66,9 @@ class MyApp extends StatelessWidget {
             locale: const Locale('ar'),
             debugShowCheckedModeBanner: false,
             theme: Styles.themeData(isDark, context),
-            home: HiveHelper.getToken() != '' ? const SplashScreen() : const OnBoardingScreen(),
+            home: HiveHelper.getToken() != '' ? const SplashScreen() :  LoginScreen(),
             routes: {
-              OnBoardingScreen.routeName: (ctx) => const OnBoardingScreen(),
+              //OnBoardingScreen.routeName: (ctx) => const OnBoardingScreen(),
               LoginScreen.routeName: (ctx) => LoginScreen(),
               AllDoctorsScreen.routeName: (ctx) => const AllDoctorsScreen(),
 

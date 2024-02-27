@@ -7,7 +7,6 @@ import '../../../../../../../utils/errors/failures.dart';
 import '../../../../../../../utils/helper/hive_helper.dart';
 import '../../../../../../../utils/network/connection/network_info.dart';
 import '../../../../../../../utils/resources/snackbar_widget.dart';
-import '../../../../../../on_boarding_screen/presentation/view/on_boarding_screen.dart';
 import '../../../../../../splash_screen/presentation/view/splash_screen.dart';
 import '../../../../../data/data_sources/auth_data_source.dart';
 import '../../../../../data/repos/auth_repo.dart';
@@ -122,11 +121,11 @@ class LoginCubit extends Cubit<LoginStates> {
         }
         emit(ClearFCMTokenErrorState());
       }, (x) async {
-        Navigator.pushNamedAndRemoveUntil(
+       /* Navigator.pushNamedAndRemoveUntil(
           context,
           OnBoardingScreen.routeName,
           ModalRoute.withName(OnBoardingScreen.routeName),
-        );
+        );*/
         HiveHelper.logout();
         emit(ClearFCMTokenSuccessState());
       });
