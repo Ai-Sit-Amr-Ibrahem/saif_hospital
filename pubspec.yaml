@@ -68,7 +68,7 @@ dependencies:
   firebase_core: ^2.9.0
   flutter_local_notifications: ^13.0.0
   cherry_toast: ^1.2.0
- # dropdown_button2: ^2.3.9
+  dropdown_button2: ^2.3.9
   flutter_onboarding_slider: ^1.0.8
 
 dev_dependencies:

@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,18 +32,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _ageController = TextEditingController();
 
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _rePasswordController = TextEditingController();
 
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _idController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   LookUps? selectedCountry;
 
   String countryValue = "";
   String gender = '20024';
   int? selectedOption;
-String? countryId;
+  String? countryId;
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -213,148 +218,229 @@ String? countryId;
                                     const SizedBox(
                                       height: 20,
                                     ),
-                                    // BlocBuilder<GetCountriesCubit,
-                                    //         GetCountriesState>(
-                                    //     builder: (context, state) {
-                                    //   return state is GetCountriesStateLoaded ?DropdownButtonHideUnderline(
-                                    //     child: DropdownButton2<LookUps>(
-                                    //       isExpanded: true,
-                                    //       hint: Text(
-                                    //
-                                    //             "اختر جنسيتك اخياري",
-                                    //         style: TextStyle(
-                                    //             color: AppColors.kTextColorAccent,
-                                    //             fontSize: SizeConfig.textScale(
-                                    //                     context) *
-                                    //                 12),
-                                    //         overflow: TextOverflow.ellipsis,
-                                    //       ),
-                                    //       items: state.data
-                                    //           .map(
-                                    //               (LookUps item) =>
-                                    //                   DropdownMenuItem<
-                                    //                       LookUps>(
-                                    //                     value: item,
-                                    //                     child:
-                                    //                         selectedCountry !=
-                                    //                                 item
-                                    //                             ? Row(
-                                    //                                 mainAxisAlignment:
-                                    //                                     MainAxisAlignment
-                                    //                                         .start,
-                                    //                                 children: [
-                                    //                                   Icon(
-                                    //                                       selectedCountry == item
-                                    //                                           ?Icons.radio_button_checked
-                                    //                                           :Icons.radio_button_off,
-                                    //                                       size: SizeConfig.height(
-                                    //                                           16,
-                                    //                                           context),
-                                    //                                      ),
-                                    //                                   const SizedBox(width: 8,),
-                                    //                                   Text(
-                                    //                                     item.lineArName ??
-                                    //                                         '',
-                                    //                                     style:
-                                    //                                         TextStyle(
-                                    //                                       fontSize:
-                                    //                                          14,
-                                    //                                       fontWeight: selectedCountry == item
-                                    //                                           ? FontWeight.w700
-                                    //                                           : FontWeight.w400,
-                                    //                                       color: selectedCountry == item
-                                    //                                           ? AppColors.mainColor
-                                    //                                           : AppColors.kTextColorAccent,
-                                    //                                     ),
-                                    //                                     overflow:
-                                    //                                         TextOverflow.ellipsis,
-                                    //                                   ),
-                                    //                                 ],
-                                    //                               )
-                                    //                             : Text(
-                                    //                                 item.lineArName ??
-                                    //                                     '',
-                                    //                                 style:
-                                    //                                     TextStyle(
-                                    //                                   fontSize:
-                                    //                                       14,
-                                    //                                   fontWeight: selectedCountry ==
-                                    //                                           item
-                                    //                                       ? FontWeight
-                                    //                                           .w700
-                                    //                                       : FontWeight
-                                    //                                           .w400,
-                                    //                                   color: selectedCountry ==
-                                    //                                           item
-                                    //                                       ? AppColors
-                                    //                                           .mainColor
-                                    //                                       : AppColors
-                                    //                                           .kTextColorAccent,
-                                    //                                 ),
-                                    //                                 overflow:
-                                    //                                     TextOverflow
-                                    //                                         .ellipsis,
-                                    //                               ),
-                                    //                   ))
-                                    //           .toList(),
-                                    //       value: selectedCountry,
-                                    //       onChanged: (LookUps? value) {
-                                    //         setState(() {
-                                    //           selectedCountry = value;
-                                    //           countryId = selectedCountry!.lineId.toString();
-                                    //         });
-                                    //
-                                    //       },
-                                    //       buttonStyleData: ButtonStyleData(
-                                    //         height: 50,
-                                    //         width: double.infinity,
-                                    //         padding: const EdgeInsets.symmetric(horizontal: 14),
-                                    //         decoration: BoxDecoration(
-                                    //           borderRadius:
-                                    //               BorderRadius.circular(10),
-                                    //           border: Border.all(
-                                    //               color: AppColors.mainColor,
-                                    //               width: 0.5),
-                                    //           color: AppColors.white,
-                                    //         ),
-                                    //         elevation: 0,
-                                    //       ),
-                                    //       iconStyleData: const IconStyleData(
-                                    //         icon: Icon(Icons.arrow_drop_down),
-                                    //         iconSize: 24,
-                                    //         iconEnabledColor: AppColors.kTextColorAccent,
-                                    //         iconDisabledColor: AppColors.kTextColorAccent,
-                                    //       ),
-                                    //       dropdownStyleData: DropdownStyleData(
-                                    //         width:
-                                    //             double.infinity,
-                                    //         maxHeight: 400,
-                                    //         padding: EdgeInsets.zero,
-                                    //         decoration: BoxDecoration(
-                                    //           border: Border.all(
-                                    //               color: AppColors.kTextColorAccent,
-                                    //               width: 0.5),
-                                    //           borderRadius:
-                                    //               BorderRadius.circular(14),
-                                    //           color: AppColors.white,
-                                    //         ),
-                                    //         offset: const Offset(0, 0),
-                                    //         scrollbarTheme: ScrollbarThemeData(
-                                    //           radius: const Radius.circular(40),
-                                    //           thickness: MaterialStateProperty
-                                    //               .all<double>(6),
-                                    //           thumbVisibility:
-                                    //               MaterialStateProperty.all<
-                                    //                   bool>(true),
-                                    //         ),
-                                    //       ),
-                                    //       menuItemStyleData: const MenuItemStyleData(
-                                    //         height: 40,
-                                    //         padding: EdgeInsets.symmetric(horizontal: 14),
-                                    //       ),
-                                    //     ),
-                                    //   ):SizedBox();
-                                    // }),
+                                    MyInputFiled(
+                                      controller: _ageController,
+                                      hint: "العمر",
+                                      inputIcon: IconlyBroken.calendar,
+                                      keybord: TextInputType.text,
+                                      fct: (value) {
+                                        if (value!.isEmpty) {
+                                          return 'من فضلك قم بإدخال العمر';
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    BlocBuilder<GetCountriesCubit,
+                                            GetCountriesState>(
+                                        builder: (context, state) {
+                                      return state is GetCountriesStateLoaded
+                                          ? DropdownButtonHideUnderline(
+                                              child: DropdownButton2<LookUps>(
+                                                isExpanded: true,
+                                                hint: Text(
+                                                  "اختر جنسيتك اخياري",
+                                                  style: TextStyle(
+                                                      color: AppColors
+                                                          .kTextColorAccent,
+                                                      fontSize:
+                                                          SizeConfig.textScale(
+                                                                  context) *
+                                                              12),
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                                items: state.data
+                                                    .map(
+                                                        (LookUps item) =>
+                                                            DropdownMenuItem<
+                                                                LookUps>(
+                                                              value: item,
+                                                              child:
+                                                                  selectedCountry !=
+                                                                          item
+                                                                      ? Row(
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.start,
+                                                                          children: [
+                                                                            Icon(
+                                                                              selectedCountry == item ? Icons.radio_button_checked : Icons.radio_button_off,
+                                                                              size: SizeConfig.height(16, context),
+                                                                            ),
+                                                                            const SizedBox(
+                                                                              width: 8,
+                                                                            ),
+                                                                            Text(
+                                                                              item.lineArName ?? '',
+                                                                              style: TextStyle(
+                                                                                fontSize: 14,
+                                                                                fontWeight: selectedCountry == item ? FontWeight.w700 : FontWeight.w400,
+                                                                                color: selectedCountry == item ? AppColors.mainColor : AppColors.kTextColorAccent,
+                                                                              ),
+                                                                              overflow: TextOverflow.ellipsis,
+                                                                            ),
+                                                                          ],
+                                                                        )
+                                                                      : Text(
+                                                                          item.lineArName ??
+                                                                              '',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontSize:
+                                                                                14,
+                                                                            fontWeight: selectedCountry == item
+                                                                                ? FontWeight.w700
+                                                                                : FontWeight.w400,
+                                                                            color: selectedCountry == item
+                                                                                ? AppColors.mainColor
+                                                                                : AppColors.kTextColorAccent,
+                                                                          ),
+                                                                          overflow:
+                                                                              TextOverflow.ellipsis,
+                                                                        ),
+                                                            ))
+                                                    .toList(),
+                                                value: selectedCountry,
+                                                onChanged: (LookUps? value) {
+                                                  setState(() {
+                                                    selectedCountry = value;
+                                                    countryId = selectedCountry!
+                                                        .lineId
+                                                        .toString();
+                                                  });
+                                                },
+                                                buttonStyleData:
+                                                    ButtonStyleData(
+                                                  height: 50,
+                                                  width: double.infinity,
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 14),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    border: Border.all(
+                                                        color:
+                                                            AppColors.mainColor,
+                                                        width: 0.5),
+                                                    color: AppColors.white,
+                                                  ),
+                                                  elevation: 0,
+                                                ),
+                                                iconStyleData:
+                                                    const IconStyleData(
+                                                  icon: Icon(
+                                                      Icons.arrow_drop_down),
+                                                  iconSize: 24,
+                                                  iconEnabledColor: AppColors
+                                                      .kTextColorAccent,
+                                                  iconDisabledColor: AppColors
+                                                      .kTextColorAccent,
+                                                ),
+                                                dropdownStyleData:
+                                                    DropdownStyleData(
+                                                  width: double.infinity,
+                                                  maxHeight: 400,
+                                                  padding: EdgeInsets.zero,
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: AppColors
+                                                            .kTextColorAccent,
+                                                        width: 0.5),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            14),
+                                                    color: AppColors.white,
+                                                  ),
+                                                  offset: const Offset(0, 0),
+                                                  scrollbarTheme:
+                                                      ScrollbarThemeData(
+                                                    radius:
+                                                        const Radius.circular(
+                                                            40),
+                                                    thickness:
+                                                        MaterialStateProperty
+                                                            .all<double>(6),
+                                                    thumbVisibility:
+                                                        MaterialStateProperty
+                                                            .all<bool>(true),
+                                                  ),
+                                                ),
+                                                menuItemStyleData:
+                                                    const MenuItemStyleData(
+                                                  height: 40,
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 14),
+                                                ),
+                                                dropdownSearchData:
+                                                    DropdownSearchData(
+                                                  searchController:
+                                                      _searchController,
+                                                  searchInnerWidgetHeight: 50,
+                                                  searchInnerWidget: Container(
+                                                    height: 50,
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                      top: 8,
+                                                      bottom: 4,
+                                                      right: 8,
+                                                      left: 8,
+                                                    ),
+                                                    child: TextFormField(
+                                                      expands: true,
+                                                      maxLines: null,
+                                                      controller:
+                                                          _searchController,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        isDense: true,
+                                                        contentPadding:
+                                                            const EdgeInsets
+                                                                .symmetric(
+                                                          horizontal: 10,
+                                                          vertical: 8,
+                                                        ),
+                                                        hintText:
+                                                            'ابحث عن دولة',
+                                                        hintStyle:
+                                                            const TextStyle(
+                                                                fontSize: 12),
+                                                        border:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(8),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  searchMatchFn:
+                                                      (item, searchValue) {
+                                                    /* log("item.value!.lineArName.toString()");
+                                                    log(item.value!.lineArName
+                                                        .toString());
+                                                    log(item.value!.lineArName
+                                                        .toString());
+                                                    log("item.value!.lineArName.toString()");*/
+                                                    return item
+                                                        .value!.lineArName
+                                                        .toString()
+                                                        .contains(searchValue);
+                                                  },
+                                                ),
+                                                //This to clear the search value when you close the menu
+                                                onMenuStateChange: (isOpen) {
+                                                  if (!isOpen) {
+                                                    _searchController.clear();
+                                                  }
+                                                },
+                                              ),
+                                            )
+                                          : SizedBox();
+                                    }),
                                     Text(countryValue),
                                     const SizedBox(
                                       height: 20,
@@ -400,56 +486,64 @@ String? countryId;
                                       height: 20,
                                     ),
                                     BlocBuilder<RegisterCubit, RegisterStates>(
-  builder: (context, state) {
-    return Align(
-                                      alignment: Alignment.bottomRight,
-                                      child: SizedBox(
-                                        height: 50,
-                                        child: state is RegisterSuccessState
-                                            ? const CircularProgressIndicator
-                                                .adaptive()
-                                            : MaterialButton(
-                                                shape: const StadiumBorder(),
-                                                clipBehavior:
-                                                    Clip.antiAliasWithSaveLayer,
-                                                elevation: 5,
-                                                onPressed: () {
-                                                  if (_formKey.currentState!
-                                                      .validate()) {
-                                                    RegisterCubit.get(context)
-                                                        .signUp(
-                                                      userName:
-                                                          _userNameController
+                                      builder: (context, state) {
+                                        return Align(
+                                          alignment: Alignment.bottomRight,
+                                          child: SizedBox(
+                                            height: 50,
+                                            child: state is RegisterSuccessState
+                                                ? const CircularProgressIndicator
+                                                    .adaptive()
+                                                : MaterialButton(
+                                                    shape:
+                                                        const StadiumBorder(),
+                                                    clipBehavior: Clip
+                                                        .antiAliasWithSaveLayer,
+                                                    elevation: 5,
+                                                    onPressed: () {
+                                                      if (_formKey.currentState!
+                                                          .validate()) {
+                                                        RegisterCubit.get(
+                                                                context)
+                                                            .signUp(
+                                                          userName:
+                                                              _userNameController
+                                                                  .text,
+                                                          name: _nameController
                                                               .text,
-                                                      name:
-                                                          _nameController.text,
-                                                      password:
-                                                          _passwordController
+                                                          password:
+                                                              _passwordController
+                                                                  .text,
+                                                          phoneNumber:
+                                                              _phoneController
+                                                                  .text,
+                                                          birthdate:
+                                                              _dateController
+                                                                  .text,
+                                                          id: _idController
                                                               .text,
-                                                      phoneNumber:
-                                                          _phoneController.text,
-                                                      birthdate:
-                                                          _dateController.text,
-                                                      id: _idController.text,
-                                                      nationality: countryId,
-                                                      gender: selectedOption
-                                                          .toString(),
-                                                      context: context,
-                                                    );
-                                                  }
-                                                },
-                                                color: AppColors.mainColor,
-                                                child: const Text(
-                                                  'تسجيل مستخدم',
-                                                  style: TextStyle(
-                                                    color: Colors.white,
+                                                          nationality:
+                                                              countryId,
+                                                          gender: selectedOption
+                                                              .toString(),
+                                                          age: _ageController
+                                                              .text,
+                                                          context: context,
+                                                        );
+                                                      }
+                                                    },
+                                                    color: AppColors.mainColor,
+                                                    child: const Text(
+                                                      'تسجيل مستخدم',
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
-                                              ),
-                                      ),
-                                    );
-  },
-),
+                                          ),
+                                        );
+                                      },
+                                    ),
                                     const SizedBox(
                                       height: 50,
                                     ),

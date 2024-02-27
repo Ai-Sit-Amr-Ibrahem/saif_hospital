@@ -53,7 +53,7 @@ class Data {
 
 class Userdata {
   String? uSERNAME;
-  int? fILENUM;
+  dynamic fILENUM;
   String? tELEPHONE;
   int? aGE;
   int? bALANCE;
