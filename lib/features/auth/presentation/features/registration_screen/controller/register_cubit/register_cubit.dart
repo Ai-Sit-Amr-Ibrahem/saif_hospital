@@ -24,6 +24,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
   void signUp({
     required String name,
     required String userName,
+    required String age,
     String? phoneNumber,
     required String password,
     String? nationality,
@@ -41,6 +42,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
       "DATE": "21-06-1997",
       "GENDER": gender??'',
       "IDENTIFYNUM": id??'',
+      "AGE": age,
     };
 
     emit(RegisterLoadingState());
